@@ -19,6 +19,9 @@ return [
         'gridview' => [
             'class' => 'kartik\grid\Module',
         ],
+        'marketing' => [
+            'class' => 'backoffice\modules\marketing\MarketingModule',
+        ],
     ],
     'components' => [
         'request' => [
