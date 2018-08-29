@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html; ?>
 
 <div class="col-md-3 left_col">
@@ -17,7 +16,7 @@ use yii\helpers\Html; ?>
             </div>
             <div class="profile_info">
                 <span><?= Yii::t('app', 'Welcome') ?>,</span>
-                <h2><?= Yii::$app->user->getIdentity()->full_name ?></h2>
+                <h2><?= Yii::$app->user->getIdentity()->full_name ?></h2>*/?>
             </div>
         </div>
         <!-- /menu profile quick info -->
@@ -29,168 +28,57 @@ use yii\helpers\Html; ?>
             <div class="menu_section">
                 <h3 style="margin-top: 20px">&nbsp;</h3>
                 <ul class="nav side-menu">
-                    <li class="tree">
-                        <a href="javascript:;">
-                            <i class="fa fa-star"></i> <?= Yii::t('app', 'Membership') ?> <span class="fa fa-chevron-down"></span>
-                        </a>
-                        <ul class="nav child_menu">
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['registry-business']); ?>">
-                                    <?= Yii::t('app', 'All Registry') ?>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['registry-business/index','type' => 'my']); ?>">
-                                    <?= Yii::t('app', 'My Registry') ?>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['registry-business-approval-log']); ?>">
-                                    <?= Yii::t('app', 'Approval') ?>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
 
-                    <li class="tree">
-                        <a href="javascript:;">
-                            <i class="fa fa-star"></i> <?= Yii::t('app', 'Approved Member') ?> <span class="fa fa-chevron-down"></span>
-                        </a>
-                        <ul class="nav child_menu">
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['business']); ?>">
-                                    <?= Yii::t('app', 'All Member') ?>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['business/index','type' => 'my']); ?>">
-                                    <?= Yii::t('app', 'My Member') ?>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    <?php
+                    if (!empty(Yii::$app->controller->module->params['navigation'])):
+                        foreach (Yii::$app->controller->module->params['navigation'] as $navLevel1): ?>
 
-                    <li class="tree">
-                        <a href="javascript:;">
-                            <i class="fa fa-users"></i> <?= Yii::t('app', 'My KPI') ?> <span class="fa fa-chevron-down"></span>
-                        </a>
-                        <ul class="nav child_menu">
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['business/kpi-by-consultant']); ?>">
-                                    <?= Yii::t('app', 'KPI by Sales Consultant') ?>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['business/kpi-by-month']); ?>">
-                                    <?= Yii::t('app', 'KPI by Month') ?>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                            <li class="<?= !empty($navLevel1['navigation']) ? 'tree' : '' ?>">
 
-                    <li class="tree">
-                        <a href="javascript:;">
-                            <i class="fa fa-users"></i> <?= Yii::t('app', 'User Management') ?> <span class="fa fa-chevron-down"></span>
-                        </a>
-                        <ul class="nav child_menu">
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['user']); ?>">
-                                    <?= Yii::t('app', 'User') ?>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['user-level']); ?>">
-                                    <?= Yii::t('app', 'User Level') ?>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['person']); ?>">
-                                    <?= Yii::t('app', 'Person') ?>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                                <?php
+                                $aUrl = 'javascript:;';
+                                $aClass = '';
 
-                    <li class="tree">
-                        <a href="javascript:;">
-                            <i class="fa fa-users"></i> <?= Yii::t('app', 'Report') ?> <span class="fa fa-chevron-down"></span>
-                        </a>
-                        <ul class="nav child_menu">
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['registry-business/report-by-district']); ?>">
-                                    <?= Yii::t('app', 'Report by District') ?>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['registry-business/report-by-village']); ?>">
-                                    <?= Yii::t('app', 'Report by Village') ?>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                                if (!empty($navLevel1['url'])) {
 
-                    <li class="tree">
-                        <a href="javascript:;">
-                            <i class="fa fa-wrench"></i> <?= Yii::t('app', 'Master Data') ?> <span class="fa fa-chevron-down"></span>
-                        </a>
-                        <ul class="nav child_menu">
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['membership-type']); ?>">
-                                    <?= Yii::t('app', 'Membership Type') ?>
+                                    $aUrl = Yii::$app->urlManager->createUrl($navLevel1['url']);
+                                    $aClass = 'menu ' . ($navLevel1['isDirect'] ? 'direct' : '');
+                                } ?>
+
+                                <a class="<?= $aClass ?>" href="<?= $aUrl ?>">
+                                    <i class="<?= $navLevel1['iconClass'] ?>"></i>
+                                    <?= Yii::t('app', $navLevel1['label']) ?>
+                                    <?= !empty($navLevel1['navigation']) ? '<span class="fa fa-chevron-down"></span>' : '' ?>
                                 </a>
+
+                                <?php
+                                if (!empty($navLevel1['navigation'])): ?>
+
+                                    <ul class="nav child_menu">
+
+                                        <?php
+                                        foreach ($navLevel1['navigation'] as $navLevel2): ?>
+
+                                            <li>
+                                                <a class="menu <?= $navLevel2['isDirect'] ? 'direct' : '' ?>" href="<?= Yii::$app->urlManager->createUrl($navLevel2['url']); ?>">
+                                                    <?= Yii::t('app', $navLevel2['label']) ?>
+                                                </a>
+                                            </li>
+
+                                        <?php
+                                        endforeach; ?>
+
+                                    </ul>
+
+                                    <?php
+                                endif; ?>
+
                             </li>
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['product-category']); ?>">
-                                    <?= Yii::t('app', 'Product Category') ?>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['product']); ?>">
-                                    <?= Yii::t('app', 'Product') ?>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['category']); ?>">
-                                    <?= Yii::t('app', 'Business Category') ?>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['facility']); ?>">
-                                    <?= Yii::t('app', 'Facility') ?>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['rating-component']); ?>">
-                                    <?= Yii::t('app', 'Rating Component') ?>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['province']); ?>">
-                                    <?= Yii::t('app', 'Province') ?>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['city']); ?>">
-                                    <?= Yii::t('app', 'City') ?>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['region']); ?>">
-                                    <?= Yii::t('app', 'Region') ?>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['district']); ?>">
-                                    <?= Yii::t('app', 'District') ?>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="menu" href="<?= Yii::$app->urlManager->createUrl(['village']); ?>">
-                                    <?= Yii::t('app', 'Village') ?>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+
+                        <?php
+                        endforeach;
+                    endif; ?>
+
                 </ul>
             </div>
 

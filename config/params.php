@@ -24,10 +24,10 @@ return [
     'errMysql' => [
         '7' => '<br>Data ini terkait dengan data yang terdapat pada modul yang lain.',
     ],
-    'checkbox-radio-script' => function() {
-        $jscript = '$(\'input[type="radio"], input[type="checkbox"]\').iCheck({
-                    checkboxClass: "icheckbox_minimal-blue",
-                    radioClass: "iradio_minimal-blue"
+    'checkbox-radio-script' => function($type = null, $color = null, $element = 'input[type=\"radio\"], input[type=\"checkbox\"]') {
+        $jscript = '$("' . $element . '").iCheck({
+                    checkboxClass: "icheckbox_' . (!empty($type) ? $type : 'square') . '-' . (!empty($color) ? $color : 'blue') . '",
+                    radioClass: "iradio_' . (!empty($type) ? $type : 'square') . '-' . (!empty($color) ? $color : 'blue') . '"
                 });';
 
         return $jscript;

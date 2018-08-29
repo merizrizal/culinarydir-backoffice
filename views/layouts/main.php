@@ -54,8 +54,8 @@ AppAsset::register($this); ?>
                 <?php
 
                 $appComponent = new AppComponent();
-                //echo $appComponent->navigation();
-                //echo $appComponent->header(); ?>
+                echo $appComponent->navigation();
+                echo $appComponent->header(); ?>
 
                 <div class="right_col" role="main">
                     <div class="page-title">

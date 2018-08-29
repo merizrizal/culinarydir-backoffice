@@ -22,6 +22,15 @@ return [
         'marketing' => [
             'class' => 'backoffice\modules\marketing\MarketingModule',
         ],
+        'approval' => [
+            'class' => 'backoffice\modules\approval\ApprovalModule',
+        ],
+        'usermanager' => [
+            'class' => 'backoffice\modules\usermanager\UserManagerModule',
+        ],
+        'masterdata' => [
+            'class' => 'backoffice\modules\masterdata\MasterDataModule',
+        ],
     ],
     'components' => [
         'request' => [
@@ -52,6 +61,8 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
+                '<module:\w+>/<controller:\w+>/<action:\w+>/<id:\w+>' => '<module>/<controller>/<action>',
                 '<controller:\w+>/<action:\w+>/<id:\w+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ]
