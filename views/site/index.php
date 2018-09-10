@@ -11,6 +11,7 @@ use yii\helpers\Html; ?>
 
             <div class="col-xs-12">
                 <?= Html::a('<i class="fa fa-sign-in-alt"></i> ' . Yii::t('app', 'Enter'), ['/marketing'], ['class' => 'btn btn-primary btn-lg btn-block']) ?>
+                <br>
             </div>
 
         </div>
@@ -25,6 +26,7 @@ use yii\helpers\Html; ?>
 
             <div class="col-xs-12">
                 <?= Html::a('<i class="fa fa-sign-in-alt"></i> ' . Yii::t('app', 'Enter'), ['/approval'], ['class' => 'btn btn-primary btn-lg btn-block']) ?>
+                <br>
             </div>
 
         </div>
@@ -39,6 +41,7 @@ use yii\helpers\Html; ?>
 
             <div class="col-xs-12">
                 <?= Html::a('<i class="fa fa-sign-in-alt"></i> ' . Yii::t('app', 'Enter'), ['/usermanager'], ['class' => 'btn btn-primary btn-lg btn-block']) ?>
+                <br>
             </div>
 
         </div>
@@ -53,6 +56,7 @@ use yii\helpers\Html; ?>
 
             <div class="col-xs-12">
                 <?= Html::a('<i class="fa fa-sign-in-alt"></i> ' . Yii::t('app', 'Enter'), ['/masterdata'], ['class' => 'btn btn-primary btn-lg btn-block']) ?>
+                <br>
             </div>
 
         </div>
