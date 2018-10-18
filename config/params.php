@@ -1,14 +1,8 @@
 <?php
 return [
-    'maskMoneyOptions' => [
+    'maskedInputOptions' => [
         'prefix' => 'Rp ',
-        'suffix' => '',
-        'affixesStay' => true,
-        'thousands' => '.',
-        'decimal' => ',',
-        'precision' => 0,
-        'allowZero' => false,
-        'allowNegative' => false,
+        'allowMinus' => false,
     ],
     'datepickerOptions' => [
         'format' => 'yyyy-mm-dd',
