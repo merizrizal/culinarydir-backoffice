@@ -6,8 +6,6 @@ use kartik\money\MaskMoney;
 kartik\select2\Select2Asset::register($this);
 kartik\select2\ThemeKrajeeAsset::register($this);
 
-$assetCommon = $this->assetBundles['common\assets\AppAsset'];
-
 if (is_array($dataModel)) {
     $model = $dataModel[0];
 } else {
