@@ -13,7 +13,7 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backoffice\controllers',
     'bootstrap' => ['log'],
-    'defaultRoute' => 'site/index',
+    'defaultRoute' => 'main/index',
     //'catchAll' => ['site/maintenance'], //dont delete, just comment to deactive
     'modules' => [
         'gridview' => [

@@ -46,23 +46,6 @@ class SiteController extends BaseController
         ];
     }
 
-    public function actionIndex() {
-
-        if (Yii::$app->user->isGuest) {
-            return $this->redirect(['site/login']);
-        }
-
-        if (!Yii::$app->request->isAjax) {
-            $this->layout = 'main';
-        } else {
-            $this->layout = 'ajax';
-        }
-
-        return $this->render('index', [
-            
-        ]);
-    }
-
     public function actionLogin() {
 
         $this->layout = 'zero';
@@ -95,9 +78,11 @@ class SiteController extends BaseController
     public function actionDefault() {
 
         if (!Yii::$app->request->isAjax) {
-            return $this->redirect(['site/index']);
+            
+            return $this->redirect(['main/index']);
         } else {
-            return $this->runAction('index');
+            
+            return $this->run('main/index');
         }
     }
 
