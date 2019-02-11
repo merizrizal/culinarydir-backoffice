@@ -25,6 +25,9 @@ return [
         'approval' => [
             'class' => 'backoffice\modules\approval\ApprovalModule',
         ],
+        'promo' => [
+            'class' => 'backoffice\modules\promo\PromoModule',
+        ],
         'usermanager' => [
             'class' => 'backoffice\modules\usermanager\UserManagerModule',
         ],
