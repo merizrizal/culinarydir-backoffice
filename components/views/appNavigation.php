@@ -73,7 +73,7 @@ use yii\helpers\Html;
 </div>
 
 <?php
-$csscript = '
+$cssScript = '
     .site_title i {
         border: none;
         padding: 0;
@@ -85,7 +85,7 @@ $csscript = '
     }
 ';
 
-$this->registerCss($csscript);
+$this->registerCss($cssScript);
 
 $jscript = '
     $(".menu").on("click", function() {
