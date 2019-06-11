@@ -28,6 +28,9 @@ return [
         'promo' => [
             'class' => 'backoffice\modules\promo\PromoModule',
         ],
+        'driver' => [
+            'class' => 'backoffice\modules\driver\DriverModule',
+        ],
         'usermanager' => [
             'class' => 'backoffice\modules\usermanager\UserManagerModule',
         ],
