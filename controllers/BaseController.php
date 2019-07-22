@@ -64,7 +64,7 @@ class BaseController extends Controller
                                             && $dataAkses['userAppModule']['module_action'] === $action->id
                                             && $dataAkses['userAppModule']['sub_program'] === \Yii::$app->params['subprogramLocal']
                                             && $dataAkses['is_active']
-                                        ) {
+                                    ) {
 
                                         return true;
                                     }
@@ -101,10 +101,10 @@ class BaseController extends Controller
                                     }
 
                                     if (
-                                        $value['nama_module'] === $module . $action->controller->id
-                                        && $value['module_action'] === $action->id
-                                        && $value['sub_program'] === \Yii::$app->params['subprogramLocal']
-                                        && $value['guest_can_access']
+                                            $value['nama_module'] === $module . $action->controller->id
+                                            && $value['module_action'] === $action->id
+                                            && $value['sub_program'] === \Yii::$app->params['subprogramLocal']
+                                            && $value['guest_can_access']
                                     ) {
 
                                         return true;
@@ -125,6 +125,7 @@ class BaseController extends Controller
     public function render($view, $params = array()) {
 
         if (\Yii::$app->request->isAjax) {
+
             $this->layout = $this->ajaxLayout;
         }
 
