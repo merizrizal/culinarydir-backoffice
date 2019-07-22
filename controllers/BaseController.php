@@ -39,33 +39,41 @@ class BaseController extends Controller
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
 
-                            if (Yii::$app->session->get('user_data')['user_level']['is_super_admin']) {
-                                return true;
-                            }
+                            $userData = Yii::$app->session->get('user_data');
 
-                            $userAkses = Yii::$app->session->get('user_data')['user_level']['userAkses'];
+                            if (!empty($userData['user_level']) && !empty($userData['user_akses'])) {
 
-                            foreach ($userAkses as $value) {
+                                foreach ($userData['user_level'] as $dataLevel) {
 
-                                $module = '';
+                                    if ($dataLevel['is_super_admin']) {
 
-                                if (!empty($action->controller->module->id)){
-
-                                    $module = $action->controller->module->id . '/';
+                                        return true;
+                                    }
                                 }
 
-                                if (
-                                        $value['userAppModule']['nama_module'] === $module . $action->controller->id
-                                        && $value['userAppModule']['module_action'] === $action->id
-                                        && $value['userAppModule']['sub_program'] === Yii::$app->params['subprogramLocal']
-                                        && $value['is_active']
-                                    ) {
+                                foreach ($userData['user_akses'] as $dataAkses) {
 
-                                    return true;
+                                    $module = '';
+
+                                    if (!empty($action->controller->module->id)) {
+
+                                        $module = $action->controller->module->id . '/';
+                                    }
+
+                                    if (
+                                            $dataAkses['userAppModule']['nama_module'] === $module . $action->controller->id
+                                            && $dataAkses['userAppModule']['module_action'] === $action->id
+                                            && $dataAkses['userAppModule']['sub_program'] === Yii::$app->params['subprogramLocal']
+                                            && $dataAkses['is_active']
+                                        ) {
+
+                                        return true;
+                                    }
                                 }
                             }
 
                             if ($action->controller->id === 'site') {
+
                                 return true;
                             }
 
@@ -76,7 +84,9 @@ class BaseController extends Controller
                         'allow' => true,
                         'roles' => ['?'],
                         'matchCallback' => function ($rule, $action) {
+
                             if ($action->controller->id === 'site') {
+
                                 return true;
                             } else {
 
@@ -114,7 +124,7 @@ class BaseController extends Controller
     }
 
     public function render($view, $params = array()) {
-        
+
         if (Yii::$app->request->isAjax) {
             $this->layout = $this->ajaxLayout;
         }
