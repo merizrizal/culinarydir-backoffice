@@ -57,7 +57,7 @@ class SiteController extends BaseController
         $post = Yii::$app->request->post();
         $model = new LoginForm();
 
-        if (!empty($post['loginButton']) && $model->load($post) && $model->login()) {
+        if (!empty($post['loginButton']) && $model->load($post) && $model->login(\Yii::$app->params['appName']['backoffice'])) {
 
             return $this->redirect(['site/default']);
         } else {
@@ -78,10 +78,10 @@ class SiteController extends BaseController
     public function actionDefault() {
 
         if (!Yii::$app->request->isAjax) {
-            
+
             return $this->redirect(['main/index']);
         } else {
-            
+
             return $this->run('main/index');
         }
     }
