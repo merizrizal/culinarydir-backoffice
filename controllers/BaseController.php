@@ -1,8 +1,8 @@
 <?php
 namespace backoffice\controllers;
 
-use yii\web\Controller;
 use yii\filters\AccessControl;
+use yii\web\Controller;
 
 /**
  * Site controller
