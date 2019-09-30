@@ -14,7 +14,6 @@ return [
     'controllerNamespace' => 'backoffice\controllers',
     'bootstrap' => ['log'],
     'defaultRoute' => 'main/index',
-    //'catchAll' => ['site/maintenance'], //dont delete, just comment to deactive
     'modules' => [
         'gridview' => [
             'class' => 'kartik\grid\Module',
